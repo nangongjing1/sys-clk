@@ -7,7 +7,7 @@
     "Settings": "高级设置",
     "Enable": "启用调频",
     "Uncapped Clocks": "解锁频率",
-    "Boost GPU Override": "Boost GPU Override",
+    "Boost GPU Override": "强制睿频",
     "Auto CPU Boost": "自动CPU",
     "Sync ReverseNX": "同步ReverseNX",
     "Auto GPU Vmin": "自动GPU Vmin",
@@ -33,8 +33,8 @@
     "Memory": "内存",
     "Do not override": "默认",
     "Profile": "配置",
-    "Fatal error": "Fatal error",
-    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.",
-    "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.",
-    "Could not connect to sys-clk.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "Could not connect to sys-clk.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled."
+    "Fatal error": "发生错误",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "无法连接到sys-clk.\n\n\n请确保所有组件\n\n已正确安装并启用.",
+    "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clk未运行.\n\n\n请确保它已被正确地\n\n安装并启用.",
+    "Could not connect to sys-clk.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "无法连接到sys-clk.\n\n\n请确保它已被正确地\n\n安装并启用."
 }
