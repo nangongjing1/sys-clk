@@ -10,7 +10,7 @@
     "Boost GPU Override": "強制睿頻",
     "Auto CPU Boost": "自動CPU",
     "Sync ReverseNX": "同步ReverseNX",
-    "Auto GPU Vmin": "自動GPU Vmin",
+    "Auto GPU Vmin": "自動GPU電壓",
     "Off": "關閉",
     "Official Service": "官方服務",
     "Hijack": "劫持",
@@ -34,7 +34,7 @@
     "Do not override": "預設",
     "Profile": "配置",
     "Fatal error": "發生錯誤",
-    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "無法連接到sys-clk.\n\n\n請確保所有組件\n\n已正確安裝並啟用.",
+    "Could not connect to sys-clk.\n\n\nPlease make sure everything is\n\ncorrectly installed and enabled.": "無法連線到sys-clk.\n\n\n請確保所有組件\n\n已正確安裝並啟用.",
     "sys-clk is not running.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "sys-clk未運行.\n\n\n請確保它已被正確地\n\n安裝並啟用.",
-    "Could not connect to sys-clk.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "無法連接到sys-clk.\n\n\n請確保它已被正確地\n\n安裝並啟用."
+    "Could not connect to sys-clk.\n\n\nPlease make sure it is correctly\n\ninstalled and enabled.": "無法連線到sys-clk.\n\n\n請確保所有組件\n\n已正確安裝並啟用."
 }
