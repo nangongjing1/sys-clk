@@ -342,11 +342,10 @@ void MiscGui::setConfigIntValue(const std::string& iniKey, int value)
 
 void MiscGui::addConfigToggle(const std::string& iniKey, const char* displayName) {
     tsl::elm::ToggleListItem* toggle = new tsl::elm::ToggleListItem(displayName, configValues[iniKey]);
-    toggle->setStateChangedListener([this, toggle, iniKey](bool state) {
+    toggle->setStateChangedListener([this, iniKey](bool state) {
         configValues[iniKey] = state;
         setConfigValue(iniKey, state);
         this->lastContextUpdate = armGetSystemTick();
-        toggle->triggerClickAnimation();
     });
     this->listElement->addItem(toggle);
     this->configToggles[iniKey] = toggle;
@@ -377,7 +376,6 @@ void MiscGui::listUI()
 
         this->lastContextUpdate = armGetSystemTick();
         this->context->enabled = state;
-        enabledToggle->triggerClickAnimation();
     });
     this->listElement->addItem(this->enabledToggle);
 
