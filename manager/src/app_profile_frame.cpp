@@ -30,7 +30,7 @@
 
 AppProfileFrame::AppProfileFrame(Title* title) : ThumbnailFrame(), title(title)
 {
-    this->setTitle("Edit application profile");
+    this->setTitle("配置应用程序");
     this->setIcon(new brls::MaterialIcon("\uE315"));
 
     // Get the freqs
@@ -61,13 +61,13 @@ AppProfileFrame::AppProfileFrame(Title* title) : ThumbnailFrame(), title(title)
         if (R_SUCCEEDED(rc))
         {
             // TODO: set the tick mark color to blue/green once borealis has rich text support
-            brls::Application::notify("\uE14B Profile saved");
+            brls::Application::notify("\uE14B 配置已保存");
             brls::Application::popView(brls::ViewAnimation::SLIDE_RIGHT);
         }
         else
         {
             errorResult("sysclkIpcSetProfiles", rc);
-            brls::Application::notify("An error occured while saving the profile - see logs for more details");
+            brls::Application::notify("保存配置时出错 - 请查看日志");
         }
     });
 
@@ -139,13 +139,13 @@ bool AppProfileFrame::onCancel()
 {
     if (this->hasProfileChanged())
     {
-        brls::Dialog* dialog = new brls::Dialog("You have unsaved changes to this profile!\nAre you sure you want to discard them?");
+        brls::Dialog* dialog = new brls::Dialog("有未保存的更改！\n要丢弃吗？");
 
-        dialog->addButton("No", [dialog](brls::View* view){
+        dialog->addButton("否", [dialog](brls::View* view){
             dialog->close();
         });
 
-        dialog->addButton("Yes", [dialog](brls::View* view){
+        dialog->addButton("是", [dialog](brls::View* view){
             dialog->close([](){
                 brls::Application::popView(brls::ViewAnimation::SLIDE_RIGHT);
             });

@@ -57,7 +57,21 @@ std::string formatTid(uint64_t tid)
 
 std::string formatProfile(SysClkProfile profile)
 {
-    return std::string(sysclkFormatProfile(profile, true));
+    switch(profile)
+    {
+        case SysClkProfile_Docked:
+            return "底座模式";
+        case SysClkProfile_Handheld:
+            return "手持模式";
+        case SysClkProfile_HandheldCharging:
+            return "充电中";
+        case SysClkProfile_HandheldChargingUSB:
+            return "非官方充电";
+        case SysClkProfile_HandheldChargingOfficial:
+            return "官方充电";
+        default:
+            return "未知模式";
+    }
 }
 
 std::string formatTemp(uint32_t temp)
@@ -106,13 +120,13 @@ brls::SelectListItem* createFreqListItem(SysClkModule module, uint32_t selectedF
     switch (module)
     {
         case SysClkModule_CPU:
-            name = "CPU Frequency";
+            name = "CPU 频率";
             break;
         case SysClkModule_GPU:
-            name = "GPU Frequency";
+            name = "GPU 频率";
             break;
         case SysClkModule_MEM:
-            name = "MEM Frequency";
+            name = "内存 频率";
             break;
         default:
             return nullptr;

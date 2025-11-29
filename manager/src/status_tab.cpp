@@ -48,7 +48,7 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
     this->setMarginBottom(0);
 
     // Enabled option
-    brls::ToggleListItem *serviceEnabledListItem = new brls::ToggleListItem("Enable service", context.enabled, "", "Yes", "No");
+    brls::ToggleListItem *serviceEnabledListItem = new brls::ToggleListItem("启用调频", context.enabled, "", "\uE14B", "\uE14C");
 
     serviceEnabledListItem->getClickEvent()->subscribe([this, serviceEnabledListItem](View* view)
     {
@@ -70,7 +70,7 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
     this->addView(serviceEnabledListItem);
 
     // Frequencies
-    brls::Header *freqsHeader = new brls::Header("Frequencies");
+    brls::Header *freqsHeader = new brls::Header("频率");
     this->addView(freqsHeader);
 
     brls::BoxLayout *freqsBox = new brls::BoxLayout(brls::BoxLayoutOrientation::VERTICAL);
@@ -84,7 +84,7 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
 
     this->cpuFreqCell = new StatusCell("CPU", formatFreq(context.freqs[SysClkModule_CPU]));
     this->gpuFreqCell = new StatusCell("GPU", formatFreq(context.freqs[SysClkModule_GPU]));
-    this->memFreqCell = new StatusCell("MEM", formatFreq(context.freqs[SysClkModule_MEM]));
+    this->memFreqCell = new StatusCell("内存", formatFreq(context.freqs[SysClkModule_MEM]));
 
     freqsLayout->addView(this->cpuFreqCell);
     freqsLayout->addView(this->gpuFreqCell);
@@ -107,15 +107,15 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
     freqsBox->addView(realFreqsLayout);
 
     // Temperatures
-    brls::Header *temperaturesHeader = new brls::Header("Temperatures");
+    brls::Header *temperaturesHeader = new brls::Header("温度");
     this->addView(temperaturesHeader);
     StatusGrid *tempsLayout = new StatusGrid();
     tempsLayout->setSpacing(22);
     tempsLayout->setHeight(40);
 
-    this->skinTempCell = new StatusCell("Skin", formatTemp(context.temps[SysClkThermalSensor_Skin]));
-    this->socTempCell = new StatusCell("SOC", formatTemp(context.temps[SysClkThermalSensor_SOC]));
-    this->pcbTempCell = new StatusCell("PCB", formatTemp(context.temps[SysClkThermalSensor_PCB]));
+    this->skinTempCell = new StatusCell("壳温", formatTemp(context.temps[SysClkThermalSensor_Skin]));
+    this->socTempCell = new StatusCell("核心", formatTemp(context.temps[SysClkThermalSensor_SOC]));
+    this->pcbTempCell = new StatusCell("主板", formatTemp(context.temps[SysClkThermalSensor_PCB]));
 
     if (context.temps[SysClkThermalSensor_SOC] > DANGEROUS_TEMP_THRESHOLD)
         this->socTempCell->setValueColor(DANGEROUS_TEMP_COLOR);
@@ -133,14 +133,14 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
     this->addView(tempsLayout);
 
     // Power
-    brls::Header *powerHeader = new brls::Header("Power");
+    brls::Header *powerHeader = new brls::Header("功耗");
     this->addView(powerHeader);
     StatusGrid *powerLayout = new StatusGrid();
     powerLayout->setSpacing(22);
     powerLayout->setHeight(40);
 
-    this->nowPowerCell = new StatusCell("Now", formatPower(context.power[SysClkPowerSensor_Now]));
-    this->avgPowerCell = new StatusCell("Avg", formatPower(context.power[SysClkPowerSensor_Avg]));
+    this->nowPowerCell = new StatusCell("当前", formatPower(context.power[SysClkPowerSensor_Now]));
+    this->avgPowerCell = new StatusCell("平均", formatPower(context.power[SysClkPowerSensor_Avg]));
 
     powerLayout->addView(new StatusCell("", ""));
     powerLayout->addView(this->nowPowerCell);
@@ -149,15 +149,15 @@ StatusTab::StatusTab(RefreshTask *refreshTask) :
     this->addView(powerLayout);
 
     // Info
-    brls::Header *systemHeader = new brls::Header("System");
+    brls::Header *systemHeader = new brls::Header("系统");
     this->addView(systemHeader);
 
     InfoGrid *infoLayout = new InfoGrid();
     infoLayout->setSpacing(22);
     infoLayout->setHeight(40);
 
-    this->profileCell   = new StatusCell("Profile", formatProfile(context.profile));
-    this->tidCell       = new StatusCell("Application ID", formatTid(context.applicationId));
+    this->profileCell   = new StatusCell("模式", formatProfile(context.profile));
+    this->tidCell       = new StatusCell("应用ID", formatTid(context.applicationId));
 
     infoLayout->addView(this->profileCell);
     infoLayout->addView(this->tidCell);

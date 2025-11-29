@@ -44,6 +44,18 @@ int main(int argc, char* argv[])
     brls::Logger::setLogLevel(brls::LogLevel::DEBUG);
 #endif
 
+    // Load Chinese font
+#ifdef __SWITCH__
+    PlFontData font;
+    Result rc = plGetSharedFontByType(&font, PlSharedFontType_ChineseSimplified);
+    if (R_SUCCEEDED(rc))
+    {
+        brls::Logger::info("Adding Chinese simplified font");
+        int chineseFont = brls::Application::loadFontFromMemory("chinese", font.address, font.size, false);
+        nvgAddFallbackFontId(brls::Application::getNVGContext(), brls::Application::getFontStash()->regular, chineseFont);
+    }
+#endif
+
     if (brls::Application::loadFont(LOGO_FONT_NAME, LOGO_FONT_PATH) < 0)
     {
         brls::Logger::error("failed to load logo font");
