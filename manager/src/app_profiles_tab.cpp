@@ -34,7 +34,7 @@
 AppProfilesTab::AppProfilesTab()
 {
     // Filter toggle
-    this->filterListItem = new brls::ToggleListItem("显示未配置的应用程序", this->showEmptyProfiles, "", "是", "否");
+    this->filterListItem = new brls::ToggleListItem("显示未配置的应用程序", this->showEmptyProfiles, "", "\uE14B", "\uE14C");
     filterListItem->getClickEvent()->subscribe([this](View* v)
     {
         this->refreshFilter();

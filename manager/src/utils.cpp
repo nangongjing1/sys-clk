@@ -126,7 +126,7 @@ brls::SelectListItem* createFreqListItem(SysClkModule module, uint32_t selectedF
             name = "GPU 频率";
             break;
         case SysClkModule_MEM:
-            name = "内存 频率";
+            name = "RAM 频率";
             break;
         default:
             return nullptr;

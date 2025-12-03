@@ -46,7 +46,7 @@ CheatSheetTab::CheatSheetTab()
     this->addView(gpuTable);
 
     // MEM
-    this->addView(new brls::Header("内存 频率"));
+    this->addView(new brls::Header("RAM 频率"));
     brls::Table *memTable = new brls::Table();
 
     memTable->addRow(brls::TableRowType::BODY, "最高&官方底座", "1600 MHz");

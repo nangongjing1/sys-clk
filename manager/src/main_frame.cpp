@@ -40,7 +40,7 @@ MainFrame::MainFrame() : TabFrame()
 
     AppProfilesTab *tab = new AppProfilesTab();
 
-    this->addTab("状态", new StatusTab(this->refreshTask));
+    this->addTab("当前状态", new StatusTab(this->refreshTask));
     this->addTab("游戏配置", tab);
     this->addTab("高级设置", new AdvancedSettingsTab());
 

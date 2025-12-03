@@ -88,17 +88,19 @@ int main(int argc, char* argv[])
     else
     {
         // Set version string
-        char version[0x100] = {0};
-        Result rc = sysclkIpcGetVersionString(version, sizeof(version));
-        if (R_SUCCEEDED(rc))
-        {
-            brls::Application::setCommonFooter(std::string(version));
-        }
-        else
-        {
-            brls::Logger::error("Unable to get sys-clk version string");
-            brls::Application::setCommonFooter("[unknown]");
-        }
+        brls::Application::setCommonFooter("1.3.0");
+
+        // char version[0x100] = {0};
+        // Result rc = sysclkIpcGetVersionString(version, sizeof(version));
+        // if (R_SUCCEEDED(rc))
+        // {
+        //     brls::Application::setCommonFooter(std::string(version));
+        // }
+        // else
+        // {
+        //     brls::Logger::error("Unable to get sys-clk version string");
+        //     brls::Application::setCommonFooter("[unknown]");
+        // }
 
 
         // Initialize services with a PC shim
