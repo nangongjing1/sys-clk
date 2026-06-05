@@ -365,9 +365,9 @@ void MiscGui::updateConfigToggles() {
 void MiscGui::listUI()
 {
 
-    this->listElement->addItem(new tsl::elm::CategoryHeader("Settings"));
+    this->listElement->addItem(new tsl::elm::CategoryHeader("高级设置"));
 
-    this->enabledToggle = new tsl::elm::ToggleListItem("Enable", false);
+    this->enabledToggle = new tsl::elm::ToggleListItem("启用调频", false);
     enabledToggle->setStateChangedListener([this](bool state) {
         Result rc = sysclkIpcSetEnabled(state);
         if(R_FAILED(rc))
@@ -382,17 +382,17 @@ void MiscGui::listUI()
     this->listElement->addItem(this->enabledToggle);
 
     // Add the 4 boolean config toggles using INI keys
-    addConfigToggle("uncapped_clocks", "Uncapped Clocks");
-    addConfigToggle("boost_gpu_override", "Boost GPU Override");
-    addConfigToggle("auto_cpu_boost", "Auto CPU Boost");
-    addConfigToggle("reversenx_sync", "Sync ReverseNX");
+    addConfigToggle("uncapped_clocks", "解锁频率");
+    addConfigToggle("boost_gpu_override", "强制睿频");
+    addConfigToggle("auto_cpu_boost", "自动CPU");
+    addConfigToggle("reversenx_sync", "同步ReverseNX");
     
     // Add GPU DVFS as a NamedStepTrackBar with V2 style
     this->autoGPUVminTrackbar = new tsl::elm::NamedStepTrackBar("", {
-        "Off",
-        "Official Service", 
-        "Hijack"
-    }, true, "Auto GPU Vmin");
+        "关闭",
+        "官方", 
+        "劫持"
+    }, true, "自动GPU电压");
     
     // Set initial value (default is 0 if not set)
     //int currentAutoGPUVminValue = getConfigIntValue("auto_gpu_vmin", 1);
@@ -438,7 +438,7 @@ void MiscGui::listUI()
             "0 mV"
         },
         true,
-        "GPU Vmin Offset"
+        "GPU Vmin偏移"
     );
         
     // Set initial value - convert stored value to trackbar index

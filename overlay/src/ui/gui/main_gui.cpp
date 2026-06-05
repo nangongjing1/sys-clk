@@ -20,7 +20,7 @@ void MainGui::listUI()
     bool isUsingEOS = usingEOS();
 
     if (!isUsingEOS) {
-        this->enabledToggle = new tsl::elm::ToggleListItem("Enable", false);
+        this->enabledToggle = new tsl::elm::ToggleListItem("启用调频", false);
         enabledToggle->setStateChangedListener([this](bool state) {
             Result rc = sysclkIpcSetEnabled(state);
             if(R_FAILED(rc))
@@ -34,7 +34,7 @@ void MainGui::listUI()
         this->listElement->addItem(this->enabledToggle);
     }
 
-    tsl::elm::ListItem* appProfileItem = new tsl::elm::ListItem("Edit App Profile");
+    tsl::elm::ListItem* appProfileItem = new tsl::elm::ListItem("程序配置");
     appProfileItem->setClickListener([this, appProfileItem](u64 keys) {
         if((keys & HidNpadButton_A) == HidNpadButton_A && this->context)
         {
@@ -47,10 +47,10 @@ void MainGui::listUI()
     });
     this->listElement->addItem(appProfileItem);
 
-    this->listElement->addItem(new tsl::elm::CategoryHeader("Advanced"));
+    this->listElement->addItem(new tsl::elm::CategoryHeader("进阶项目"));
 
     if (isUsingEOS) {
-        tsl::elm::ListItem* globalProfileItem = new tsl::elm::ListItem("Edit Global Profile");
+        tsl::elm::ListItem* globalProfileItem = new tsl::elm::ListItem("全局配置");
         globalProfileItem->setClickListener([this, globalProfileItem](u64 keys) {
             if((keys & HidNpadButton_A) == HidNpadButton_A && this->context)
             {
@@ -64,7 +64,7 @@ void MainGui::listUI()
         this->listElement->addItem(globalProfileItem);
     }
 
-    tsl::elm::ListItem* globalOverrideItem = new tsl::elm::ListItem("Temporary Overrides");
+    tsl::elm::ListItem* globalOverrideItem = new tsl::elm::ListItem("临时配置");
     globalOverrideItem->setClickListener([this, globalOverrideItem](u64 keys) {
         if((keys & HidNpadButton_A) == HidNpadButton_A)
         {
@@ -80,7 +80,7 @@ void MainGui::listUI()
     //this->listElement->addItem(new tsl::elm::CategoryHeader("Misc"));
 
     if (isUsingEOS) {
-        tsl::elm::ListItem* miscItem = new tsl::elm::ListItem("Settings");
+        tsl::elm::ListItem* miscItem = new tsl::elm::ListItem("高级设置");
         miscItem->setClickListener([this, miscItem](u64 keys) {
             if((keys & HidNpadButton_A) == HidNpadButton_A && this->context)
             {

@@ -54,7 +54,7 @@ void FreqChoiceGui::listUI()
     for(std::uint32_t i = 0; i < this->hzCount; i++) {
         hz = this->hzList[i];
         // Skip 204 MHz exactly
-        if(moduleName == "Memory" && hz == 204000000) {
+        if(moduleName == "内存" && hz == 204000000) {
             continue;
         }
         

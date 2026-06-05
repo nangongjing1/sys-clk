@@ -37,7 +37,7 @@ include ${TOPDIR}/lib/libultrahand/ultrahand.mk
 # version control constants
 #---------------------------------------------------------------------------------
 #TARGET_VERSION	:= $(shell git describe --dirty --always --tags)
-APP_VERSION		:= 2.0.1+r24
+APP_VERSION		:= 2.1.0
 TARGET_VERSION := $(APP_VERSION)
 
 #---------------------------------------------------------------------------------
@@ -47,9 +47,9 @@ DEFINES	:=	-DDISABLE_IPC -DTARGET="\"$(TARGET)\"" -DTARGET_VERSION="\"$(TARGET_V
 
 ARCH	:=	-march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIE
 
-CFLAGS	:=	-O3 -Wall -flto -fdata-sections -ffunction-sections -fno-rtti -fno-common \
-            -fuse-linker-plugin -fomit-frame-pointer -finline-small-functions \
-            -fno-strict-aliasing -frename-registers -falign-functions=16 \
+CFLAGS	:=	-Os -Wall -flto -fdata-sections -ffunction-sections -fno-rtti -fno-common \
+            -fuse-linker-plugin -fomit-frame-pointer -fno-ident \
+            -fno-strict-aliasing -frename-registers \
 			$(ARCH) $(DEFINES)
 
 CFLAGS	+=	$(INCLUDE) -D__SWITCH__
@@ -69,8 +69,8 @@ LDFLAGS += -Wl,-wrap,__cxa_throw \
 
 CXXFLAGS	:= $(CFLAGS) -fno-exceptions -std=c++26 -Wno-dangling-else -ffast-math
 
-ASFLAGS	:=	-g $(ARCH)
-LDFLAGS	+=	-specs=$(DEVKITPRO)/libnx/switch.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
+ASFLAGS	:=	$(ARCH)
+LDFLAGS	+=	-specs=$(DEVKITPRO)/libnx/switch.specs $(ARCH) -Wl,-Map,$(notdir $*.map) -Wl,--gc-sections -Wl,-S -Wl,--as-needed
 
 LIBS := -lcurl -lz -lzzip -lmbedtls -lmbedx509 -lmbedcrypto -lnx
 

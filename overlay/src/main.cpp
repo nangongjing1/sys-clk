@@ -41,10 +41,10 @@ class AppOverlay : public tsl::Overlay
             if(!sysclkIpcRunning())
             {
                 return initially<FatalGui>(
-                    "sys-clk is not running.\n\n"
+                    "sys-clk未运行.\n\n"
                     "\n"
-                    "Please make sure it is correctly\n\n"
-                    "installed and enabled.",
+                    "请确保它已被正确地\n\n"
+                    "安装并启用.",
                     ""
                 );
             }
@@ -52,10 +52,10 @@ class AppOverlay : public tsl::Overlay
             if(R_FAILED(sysclkIpcInitialize()) || R_FAILED(sysclkIpcGetAPIVersion(&apiVersion)))
             {
                 return initially<FatalGui>(
-                    "Could not connect to sys-clk.\n\n"
+                    "无法连接到sys-clk.\n\n"
                     "\n"
-                    "Please make sure it is correctly\n\n"
-                    "installed and enabled.",
+                    "请确保所有组件\n\n"
+                    "已正确安装并启用.",
                     ""
                 );
             }

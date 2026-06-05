@@ -72,7 +72,7 @@ static inline const char* sysclkFormatModule(SysClkModule module, bool pretty)
         case SysClkModule_GPU:
             return pretty ? "GPU" : "gpu";
         case SysClkModule_MEM:
-            return pretty ? "Memory" : "mem";
+            return pretty ? "内存" : "mem";
         default:
             return NULL;
     }
@@ -98,9 +98,9 @@ static inline const char* sysclkFormatPowerSensor(SysClkPowerSensor powSensor, b
     switch(powSensor)
     {
         case SysClkPowerSensor_Now:
-            return pretty ? "Now" : "now";
+            return pretty ? "当前" : "now";
         case SysClkPowerSensor_Avg:
-            return pretty ? "Avg" : "avg";
+            return pretty ? "平均" : "avg";
         default:
             return NULL;
     }
@@ -111,15 +111,15 @@ static inline const char* sysclkFormatProfile(SysClkProfile profile, bool pretty
     switch(profile)
     {
         case SysClkProfile_Docked:
-            return pretty ? "Docked" : "docked";
+            return pretty ? "底座模式" : "docked";
         case SysClkProfile_Handheld:
-            return pretty ? "Handheld" : "handheld";
+            return pretty ? "手持模式" : "handheld";
         case SysClkProfile_HandheldCharging:
-            return pretty ? "Charging" : "handheld_charging";
+            return pretty ? "充电中" : "handheld_charging";
         case SysClkProfile_HandheldChargingUSB:
-            return pretty ? "USB Charger" : "handheld_charging_usb";
+            return pretty ? "USB充电器" : "handheld_charging_usb";
         case SysClkProfile_HandheldChargingOfficial:
-            return pretty ? "Official Charger" : "handheld_charging_official";
+            return pretty ? "官方充电器" : "handheld_charging_official";
         default:
             return NULL;
     }

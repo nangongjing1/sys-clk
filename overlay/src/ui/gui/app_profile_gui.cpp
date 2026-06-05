@@ -88,7 +88,7 @@ void AppProfileGui::addModuleListItem(SysClkProfile profile, SysClkModule module
 
 void AppProfileGui::addProfileUI(SysClkProfile profile)
 {
-    this->listElement->addItem(new tsl::elm::CategoryHeader(sysclkFormatProfile(profile, true) + std::string(" ") + ult::DIVIDER_SYMBOL + "  Reset"));
+    this->listElement->addItem(new tsl::elm::CategoryHeader(sysclkFormatProfile(profile, true) + std::string(" ") + ult::DIVIDER_SYMBOL + "  重置"));
     this->addModuleListItem(profile, SysClkModule_CPU);
     this->addModuleListItem(profile, SysClkModule_GPU);
     this->addModuleListItem(profile, SysClkModule_MEM);
@@ -124,10 +124,10 @@ void AppProfileGui::update()
     if((this->context && this->applicationId != this->context->applicationId) &&  this->applicationId != SYSCLK_GLOBAL_PROFILE_TID)
     {
         tsl::changeTo<FatalGui>(
-            "Application changed\n\n"
+            "程序已更改\n\n"
             "\n"
-            "The running application changed\n\n"
-            "while editing was going on.",
+            "正在编辑时运行的程序\n\n"
+            "发生了更改.",
             ""
         );
     }
