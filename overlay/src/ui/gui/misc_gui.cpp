@@ -406,6 +406,7 @@ void MiscGui::listUI()
     // Ensure the value is within valid range (0-2)
     const int currentAutoGPUVminValue = std::max(0, std::min(2, getConfigIntValue("auto_gpu_vmin", 1)));
     this->autoGPUVminTrackbar->setProgress(static_cast<u8>(currentAutoGPUVminValue));
+    this->autoGPUVminTrackbar->disableClickAnimation();
     
     // Set up the value change listener to update the INI file
     this->autoGPUVminTrackbar->setValueChangedListener([this](u8 value) {
@@ -457,6 +458,7 @@ void MiscGui::listUI()
     const int storedGPUVminOffsetValue = getConfigIntValue("gpu_vmin_offset", 0);
     const int trackbarIndex = std::max(0, std::min(numEntries-1, (100 - storedGPUVminOffsetValue) / 5));
     this->gpuVminOffsetTrackbar->setProgress(static_cast<u8>(trackbarIndex));
+    this->gpuVminOffsetTrackbar->disableClickAnimation();
     
     // Set up the value change listener to update the INI file
     this->gpuVminOffsetTrackbar->setValueChangedListener([this](u8 value) {

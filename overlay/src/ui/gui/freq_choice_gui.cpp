@@ -25,7 +25,7 @@ FreqChoiceGui::FreqChoiceGui(std::uint32_t selectedHz, std::uint32_t* hzList, st
 tsl::elm::ListItem* FreqChoiceGui::createFreqListItem(std::uint32_t hz, bool selected)
 {
     tsl::elm::ListItem* listItem = new tsl::elm::ListItem(formatListFreqHz(hz), "", true);
-    listItem->setValue(selected ? "\uE14B" : "");
+    listItem->setValue(selected ? ult::CHECKMARK_SYMBOL : "");
 
     listItem->setClickListener([this, hz](u64 keys) {
         if((keys & KEY_A) == KEY_A && this->listener)
@@ -39,6 +39,11 @@ tsl::elm::ListItem* FreqChoiceGui::createFreqListItem(std::uint32_t hz, bool sel
 
         return false;
     });
+
+    // Plain Switch2-style radio circle (no side label needed — the frequency
+    // itself is already the item's text), same approach as ultrahand's
+    // Sort Priority / Key Combo lists.
+    listItem->setRadioSelector();
 
     return listItem;
 }
@@ -60,5 +65,5 @@ void FreqChoiceGui::listUI()
         
         this->listElement->addItem(this->createFreqListItem(hz, (hz / 1000000) == (this->selectedHz / 1000000)));
     }
-    this->listElement->jumpToItem("", "");
+    this->listElement->jumpToItem("", ult::CHECKMARK_SYMBOL);
 }

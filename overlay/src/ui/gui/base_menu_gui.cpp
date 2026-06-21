@@ -79,10 +79,22 @@ void BaseMenuGui::preDraw(tsl::gfx::Renderer* renderer) {
 
     static u32 maxProfileValueWidth = renderer->getTextDimensions("官方充电器", false, SMALL_TEXT_SIZE).first; // longest word
 
+    const auto w2 = tsl::makeSwitch2Wheel(
+        tsl::s2TableBorderColor1,           // anchor[0] UR — fixed peak: Muted Violet-Steel
+        tsl::s2TableBorderColor2,           // anchor[2] LL — fixed peak: Deep Slate
+        tsl::s2TableBorderColor3,           // anchor[1] LR — hero bright: dim Warm Steel
+        tsl::s2TableBorderColor3Deep,       // anchor[1] LR — hero deep: dark Slate Navy
+        tsl::s2TableBorderColor4,           // anchor[3] UL — hero bright: dim Periwinkle
+        tsl::s2TableBorderColor4Deep,       // anchor[3] UL — hero deep: dark Indigo Gray
+        12.0,
+        true
+    );
+
     u32 y = 91;
     
     // === TOP SECTION ===
-    renderer->drawRoundedRect(14, 70-1, 420, 30+2, 12.0f, renderer->aWithOpacity(tsl::tableBGColor));
+    renderer->drawRoundedRect(14+1, 70-1+1, 420-2, 30+2-2, 12.0f, renderer->aWithOpacity(tsl::tableBGColor));
+    renderer->drawBorderedRoundedRect(14, 70-1, 420, 30+2, 1.0, 12.0f, renderer->aWithOpacity(tsl::tableBorderColor), ult::useDynamicTableColors ? &w2 : nullptr);
     
     // App ID - use pre-formatted string
     renderer->drawString(labels[0], false, positions[0], y, SMALL_TEXT_SIZE, tsl::sectionTextColor);
@@ -95,7 +107,8 @@ void BaseMenuGui::preDraw(tsl::gfx::Renderer* renderer) {
     y = 129; // Direct assignment instead of += 38
     
     // === MAIN DATA SECTION ===
-    renderer->drawRoundedRect(14, 106, 420, 116, 12.0f, renderer->aWithOpacity(tsl::tableBGColor));
+    renderer->drawRoundedRect(14+1, 106+1, 420-2, 116-2, 12.0f, renderer->aWithOpacity(tsl::tableBGColor));
+    renderer->drawBorderedRoundedRect(14, 106, 420, 116, 1.0, 12.0f, renderer->aWithOpacity(tsl::tableBorderColor), ult::useDynamicTableColors ? &w2 : nullptr);
     
     // === FREQUENCY SECTION ===
     // Labels first (better cache locality)
